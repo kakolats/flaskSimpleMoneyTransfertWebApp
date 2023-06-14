@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class = "col-sm-5 offset-4">
+        <h1>Connexion Client</h1>
+        <div class="form-group">
+            {{form.login.label}}
+            {{ form.login (class = "form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{form.password.label}}
+            {{ form.password(class = "form-control") }}
+        </div>
+
+        <div class="form-group">
+            {% for msg in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Erreur!</strong> {{ msg }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit (class = "btn btn-primary mt-5") }}
+        </div>
+    </div>
+</form>
+
+{% endblock %}

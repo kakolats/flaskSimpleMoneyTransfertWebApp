@@ -1,0 +1,64 @@
+{% extends 'base.client.html' %}
+{% block title %}Recharges{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+    
+    <div class="row">     
+        <div class="col-6">
+            <h2>Envois</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Expediteur</th>
+                    <th scope="col">Receveur</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                {% for item in envois %}
+                <tr>
+                    <th scope="row">{{item['item'].date}}</th>
+                    <td>{{item['item'].type}}</td>
+                    <td>{{item['item'].montant}}</td>
+                    <td>{{item['expediteur']}}</td>
+                    <td>{{item['receveur']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h2>Receptions</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Expediteur</th>
+                    <th scope="col">Receveur</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                {% for item in receptions %}
+                <tr>
+                    <th scope="row">{{item['item'].date}}</th>
+                    <td>{{item['item'].type}}</td>
+                    <td>{{item['item'].montant}}</td>
+                    <td>{{item['expediteur']}}</td>
+                    <td>{{item['receveur']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+{% endblock %}

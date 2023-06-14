@@ -1,0 +1,34 @@
+{% extends 'base.admin.html' %}
+{% block title %}Gestion{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+    
+    <div class="container">   
+        
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in users %}
+            <tr>
+                <th scope="row">{{item.nom}}</th>
+                <td>{{item.prenom}}</td>
+                <td>{{item.email}}</td>
+                <td>{% if item.etat %}Actif{% else %}Desactivé{% endif %}</td>
+                <td><a href="{{url_for('changeDistributeurState',id=item.id)}}"><button type="button" class="btn btn-primary">{% if item.etat %}Desactiver{% else %}Activer{% endif %}</button></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

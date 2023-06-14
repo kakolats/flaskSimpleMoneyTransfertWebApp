@@ -1,0 +1,41 @@
+{% extends 'base.admin.html' %}
+{% block title %}Gestion{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+    
+    <div class="container">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="input-group rounded col-sm-5 offset-4 mb-5">
+                {{ form.numero (class = "form-control") }}
+                {{ form.submit (class = "btn btn-primary")}}
+            </div>
+        </form>        
+        
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Numero de compte</th>
+                <th scope="col">Solde</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in users %}
+            <tr>
+                <th scope="row">{{item.nom}}</th>
+                <td>{{item.prenom}}</td>
+                <td>{{item.numero}}</td>
+                <td>{{item.solde}}</td>
+                <td><a href="{{url_for('changeAccountState',id=item.id)}}"><button type="button" class="btn btn-primary">{% if item.etat %}Desactiver{% else %}Activer{% endif %}</button></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
